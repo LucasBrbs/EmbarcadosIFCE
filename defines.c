@@ -189,13 +189,34 @@ void write_pin(port_t port, pin_t pin, pin_level_t level)
 }
 
 
+void write_clock(port_t port, int value)
+{
+    char vet_clock[10] = {0b0000,0b0001,0b0010,0b0011,0b0100,0b0101,0b0110,0b0111,0b1000};
+    char vet_clock_test[10] = {0b00000000,0b00001000,0b00000100, 0b00001100,0b00000010,0b00001010, 0b00000110, 0b00001110,0b00000001,0b00001001};
+    if(port == PORT_A)
+    {
+        LATA= vet_clock_test[value]; 
+    }
+     if(port == PORT_B)
+    {
+        LATB= vet_clock_test[value]; 
+    }
+     if(port == PORT_C)
+    {
+        LATC= vet_clock_test[value]; 
+    }
+}
+
 
 void delay_s (int segundos)
 {
 	unsigned long int i;
 	for (;segundos>0;segundos--)
 	{
-		for (i=0;i<83333;i++) {};
+		for (i=0;i<83333;i++) 
+        {
+
+        }
 	}
 }
 
@@ -204,7 +225,9 @@ void delay_ms (int ms)
 	unsigned long int i;
 	for (;ms>0;ms--)
 	{
-		for (i=0;i<80;i++) {};
-//		i=0;
+		for (i=0;i<80;i++) 
+        {
+
+        }
 	}
 }
