@@ -1,0 +1,51 @@
+Version 4.0 HI-TECH Software Intermediate Code
+[p mainexit ]
+[v F18 `(v ~T0 @X0 0 tf ]
+[v F20 `(v ~T0 @X0 0 tf1`uc ]
+[v F23 `(v ~T0 @X0 0 tf1`*Cuc ]
+[v F26 `(uc ~T0 @X0 0 tf ]
+[v F28 `(v ~T0 @X0 0 tf ]
+[v F30 `(*uc ~T0 @X0 0 tf ]
+"26 ./defines.h
+[; ;./defines.h: 26: char readByte(void);
+[s S1 `*F18 1 `*F20 1 `*F23 1 `*F26 1 `*F28 1 `*F30 1 ]
+[n S1 . init write write_bytes read wait read_bytes ]
+"44
+[v _Uart `S1 ~T0 @X0 0 e ]
+"12 ./defines.h
+[; ;./defines.h: 12: {
+[p x WDT  =  OFF ]
+[v $root$_main `(v ~T0 @X0 0 e ]
+"3 main.c
+[; ;main.c: 3: void main(void)
+[v _main `(v ~T0 @X0 1 ef ]
+"4
+[; ;main.c: 4: {
+{
+[e :U _main ]
+[f ]
+"5
+[; ;main.c: 5:     Uart.init();
+[e ( *U . _Uart 0 ..  ]
+"6
+[; ;main.c: 6:     while(1)
+[e :U 4 ]
+"7
+[; ;main.c: 7:     {
+{
+"8
+[; ;main.c: 8:       Uart.write(Uart.read());
+[e ( *U . _Uart 1 (1 ( *U . _Uart 3 ..  ]
+"9
+[; ;main.c: 9:       Uart.wait();
+[e ( *U . _Uart 4 ..  ]
+"10
+[; ;main.c: 10:     }
+}
+[e :U 3 ]
+[e $U 4  ]
+[e :U 5 ]
+"11
+[; ;main.c: 11: }
+[e :UE 2 ]
+}
